@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chambaland | Confianza bajo demanda para tu hogar</title>
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para iconografía -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Configuración personalizada de Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        blue: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563EB', // Color secundario (Acción/Confianza)
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1E3A8A', // Color primario (Marca)
+                        },
+                        orange: {
+                            500: '#F97316', // Acento
+                            600: '#EA580C',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        
+        /* Animaciones sutiles tipo SaaS */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 antialiased bg-white selection:bg-blue-200 selection:text-blue-900">
+
+    <!-- Header / Navbar -->
+    <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-blue-900 tracking-tight">Chambaland<span class="text-orange-500">.</span></a>
+                </div>
+                
+                <!-- Enlaces Escritorio -->
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#problema" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Problema</a>
+                    <a href="#solucion" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Solución</a>
+                    <a href="#solucion" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Beneficios</a>
+                    <a href="#equipo" class="text-gray-600 hover:text-blue-600 font-medium transition-colors">Inversión</a>
+                    <a href="#contacto" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full font-medium transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Acceso Anticipado</a>
+                </nav>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-900 focus:outline-none p-2 transition-transform hover:scale-110">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay Menú Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-2xl origin-top transition-transform duration-300">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#problema" class="block px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg mobile-link transition-colors">Problema</a>
+                <a href="#solucion" class="block px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg mobile-link transition-colors">Solución</a>
+                <a href="#solucion" class="block px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg mobile-link transition-colors">Beneficios</a>
+                <a href="#equipo" class="block px-4 py-3 text-base font-medium text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg mobile-link transition-colors">Inversión</a>
+                <a href="#contacto" class="block mt-4 text-center bg-orange-500 hover:bg-orange-600 text-white px-6 py-3.5 rounded-xl font-medium transition-colors shadow-md mobile-link">Acceso Anticipado</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Decoraciones de fondo -->
+        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true">
+            <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-blue-100 to-blue-200 opacity-30 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+                <!-- Textos Hero -->
+                <div class="text-center lg:text-left mb-16 lg:mb-0">
+                    <div class="inline-flex items-center px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm font-semibold mb-6 border border-blue-100 shadow-sm">
+                        <span class="flex h-2 w-2 rounded-full bg-blue-600 mr-2 animate-pulse"></span>
+                        Revolucionando el servicio en México
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-blue-900 leading-[1.15] mb-6">
+                        Confianza bajo demanda <br class="hidden lg:block"/> para tu hogar.
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-gray-600 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        El primer Marketplace en México que transforma la 'chamba' informal en un servicio predecible, seguro y garantizado.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all shadow-[0_8px_30px_rgb(37,99,235,0.3)] hover:shadow-[0_8px_30px_rgb(37,99,235,0.4)] transform hover:-translate-y-1 text-center flex items-center justify-center">
+                            Únete a la lista de espera
+                        </a>
+                        <a href="#problema" class="bg-white border-2 border-gray-200 hover:border-blue-600 hover:bg-blue-50 hover:text-blue-600 text-gray-700 px-8 py-4 rounded-xl font-semibold text-lg transition-all text-center">
+                            Conoce más
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Imagen Hero -->
+                <div class="relative lg:pl-10">
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl group border border-gray-100">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Profesional técnico" class="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-blue-900/60 via-blue-900/20 to-transparent"></div>
+                        
+                        <!-- Mini tarjeta de confianza -->
+                        <div class="absolute bottom-6 w-full px-6 flex justify-center">
+                            <div class="bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg border border-white/20 flex items-center space-x-4 max-w-sm w-full">
+                                <div class="bg-green-100 text-green-600 p-2 rounded-full">
+                                    <i class="fa-solid fa-check-circle text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-bold text-gray-900">Técnico Verificado</p>
+                                    <p class="text-xs text-gray-500">Identidad y antecedentes validados</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decoraciones abstractas detrás de la imagen -->
+                    <div class="absolute -top-10 -right-10 w-72 h-72 bg-blue-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob -z-10"></div>
+                    <div class="absolute -bottom-10 -left-10 w-72 h-72 bg-orange-100/50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000 -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem Section -->
+    <section id="problema" class="py-24 bg-gray-50 border-y border-gray-100 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-orange-500 font-bold tracking-wider uppercase text-sm mb-3 block">La Situación Actual</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-blue-900 mb-6">Reparar tu casa no debería ser un salto de fe.</h2>
+                <div class="w-24 h-1.5 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tarjeta 1 -->
+                <div class="bg-white p-10 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group transform hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-red-50 rounded-bl-full -z-10 opacity-50 group-hover:scale-110 transition-transform"></div>
+                    <div class="w-16 h-16 bg-red-50 rounded-2xl flex items-center justify-center text-red-500 mb-8 border border-red-100 group-hover:bg-red-500 group-hover:text-white transition-colors duration-300 shadow-sm">
+                        <i class="fa-solid fa-triangle-exclamation text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 leading-snug">871,000 técnicos en la informalidad</h3>
+                    <p class="text-gray-600 leading-relaxed font-light">Sin certificaciones comprobables ni garantías reales sobre la calidad del trabajo o la seguridad en tu hogar.</p>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="bg-white p-10 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group transform hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-bl-full -z-10 opacity-50 group-hover:scale-110 transition-transform"></div>
+                    <div class="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-500 mb-8 border border-orange-100 group-hover:bg-orange-500 group-hover:text-white transition-colors duration-300 shadow-sm">
+                        <i class="fa-solid fa-money-bill-wave text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 leading-snug">Cobros sorpresa y abusivos</h3>
+                    <p class="text-gray-600 leading-relaxed font-light">Presupuestos que cambian a medio trabajo, compras de material innecesarias y cero transparencia en la tarifa real.</p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="bg-white p-10 rounded-[2rem] shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 group transform hover:-translate-y-2 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10 opacity-50 group-hover:scale-110 transition-transform"></div>
+                    <div class="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-8 border border-blue-100 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                        <i class="fa-solid fa-clock-rotate-left text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 leading-snug">Impuntualidad y Ghosting</h3>
+                    <p class="text-gray-600 leading-relaxed font-light">Técnicos que jamás llegan, trabajos abandonados a la mitad de la reparación y nula capacidad para exigir el cumplimiento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Section -->
+    <section id="solucion" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="inline-block py-1 px-3 rounded-full bg-blue-50 text-blue-600 font-semibold tracking-wider uppercase text-sm mb-4 border border-blue-100">La Propuesta de Valor</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-blue-900 mb-6">¿Cómo garantizamos tu seguridad?</h2>
+                <p class="text-xl text-gray-500 font-light">Un ecosistema diseñado desde cero para brindarte total paz mental antes, durante y después del servicio.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
+                <!-- Item 1 -->
+                <div class="flex flex-col sm:flex-row text-center sm:text-left items-center sm:items-start group p-6 rounded-3xl hover:bg-gray-50 transition-colors duration-300">
+                    <div class="flex-shrink-0 mb-6 sm:mb-0 sm:mr-8">
+                        <div class="w-20 h-20 bg-white border border-gray-200 text-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 transform group-hover:-translate-y-2">
+                            <i class="fa-solid fa-shield-halved text-3xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Triple Verificación</h3>
+                        <p class="text-gray-600 leading-relaxed font-light text-lg">Validamos minuciosamente identidad, antecedentes penales y competencias técnicas. Cuidamos tu hogar; solo el 15% de los aplicantes es aceptado.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="flex flex-col sm:flex-row text-center sm:text-left items-center sm:items-start group p-6 rounded-3xl hover:bg-gray-50 transition-colors duration-300">
+                    <div class="flex-shrink-0 mb-6 sm:mb-0 sm:mr-8">
+                        <div class="w-20 h-20 bg-white border border-gray-200 text-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 transform group-hover:-translate-y-2">
+                            <i class="fa-solid fa-tags text-3xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Precios Estandarizados</h3>
+                        <p class="text-gray-600 leading-relaxed font-light text-lg">Conoce el costo exacto antes de solicitar mediante nuestro tabulador inteligente en la app. Cero cobros sorpresa, propinas ocultas o inflados de material.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="flex flex-col sm:flex-row text-center sm:text-left items-center sm:items-start group p-6 rounded-3xl hover:bg-gray-50 transition-colors duration-300">
+                    <div class="flex-shrink-0 mb-6 sm:mb-0 sm:mr-8">
+                        <div class="w-20 h-20 bg-white border border-gray-200 text-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 transform group-hover:-translate-y-2">
+                            <i class="fa-solid fa-location-crosshairs text-3xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Rastreo GPS</h3>
+                        <p class="text-gray-600 leading-relaxed font-light text-lg">Sigue a tu técnico en tiempo real desde que acepta el servicio hasta su llegada a tu puerta. Evita incertidumbre y tiempos de espera perdidos.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="flex flex-col sm:flex-row text-center sm:text-left items-center sm:items-start group p-6 rounded-3xl hover:bg-gray-50 transition-colors duration-300">
+                    <div class="flex-shrink-0 mb-6 sm:mb-0 sm:mr-8">
+                        <div class="w-20 h-20 bg-white border border-gray-200 text-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:bg-blue-600 group-hover:text-white group-hover:border-blue-600 transition-all duration-300 transform group-hover:-translate-y-2">
+                            <i class="fa-solid fa-lock text-3xl"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Pago Protegido</h3>
+                        <p class="text-gray-600 leading-relaxed font-light text-lg">Tu dinero se retiene de forma segura en 'escrow' hasta que confirmes satisfacción total. Todo es transaccionado digitalmente, sin necesidad de efectivo.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team / Contact Section -->
+    <section id="equipo" class="py-24 bg-gray-50 border-t border-gray-100 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-20 items-center">
+                
+                <!-- Team Info -->
+                <div class="mb-12 lg:mb-0">
+                    <div class="inline-flex items-center space-x-2 text-sm font-semibold tracking-wider text-orange-500 uppercase mb-4">
+                        <span class="w-8 h-[2px] bg-orange-500 inline-block"></span>
+                        <span>Sobre nosotros</span>
+                    </div>
+                    
+                    <h2 class="text-3xl md:text-5xl font-bold text-blue-900 mb-6 leading-tight">Desarrollado por Ingenieros en Software.</h2>
+                    <p class="text-lg text-gray-600 mb-10 leading-relaxed font-light">
+                        Chambaland nace de la visión de transformar un sector tradicional mediante tecnología de punta. Nuestro equipo combina un fuerte background técnico y diseño centrado en el usuario para construir una infraestructura de confianza transaccional en México.
+                    </p>
+                    
+                    <div class="bg-white p-6 sm:p-8 rounded-[2rem] shadow-sm border border-gray-100 flex items-start space-x-6 hover:shadow-md transition-shadow">
+                        <div class="bg-blue-50 p-4 rounded-2xl text-blue-600 border border-blue-100">
+                            <i class="fa-solid fa-code text-2xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold text-gray-900 mb-1">Fundadores</h4>
+                            <p class="text-gray-600 mb-2">Ing. Alaniz, Huitron, Rivera y Gutierrez.</p>
+                            <div class="inline-flex items-center px-3 py-1 bg-gray-50 border border-gray-200 rounded-lg">
+                                <i class="fa-solid fa-graduation-cap text-gray-400 mr-2 text-sm"></i>
+                                <span class="text-sm text-gray-500 font-medium tracking-wide">Universidad de Colima</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form (Estético) -->
+                <div id="contacto" class="bg-white p-8 sm:p-12 rounded-[2.5rem] shadow-2xl border border-gray-100 relative overflow-hidden transform lg:-translate-y-4">
+                    <!-- Elementos de diseño en formulario -->
+                    <div class="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-blue-50 to-blue-100 rounded-bl-full -z-10"></div>
+                    <div class="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-orange-50 to-orange-100 rounded-tr-full -z-10"></div>
+                    
+                    <div class="text-center mb-10">
+                        <h3 class="text-3xl font-bold text-blue-900 mb-3">Sé parte de la revolución</h3>
+                        <p class="text-gray-500">Regístrate para obtener acceso anticipado.</p>
+                    </div>
+
+                    <form class="space-y-6" onsubmit="event.preventDefault(); alert('¡Gracias por tu interés! Validaremos tu información y te contactaremos a la brevedad posible.');">
+                        <div class="space-y-5">
+                            <div>
+                                <label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Nombre completo</label>
+                                <input type="text" id="name" class="w-full px-5 py-3.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-gray-50 focus:bg-white outline-none placeholder-gray-400" placeholder="Ej. Juan Pérez" required>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Correo electrónico</label>
+                                <input type="email" id="email" class="w-full px-5 py-3.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-gray-50 focus:bg-white outline-none placeholder-gray-400" placeholder="juan@ejemplo.com" required>
+                            </div>
+
+                            <div>
+                                <label for="interest" class="block text-sm font-semibold text-gray-700 mb-2">Me interesa como...</label>
+                                <div class="relative">
+                                    <select id="interest" class="w-full px-5 py-3.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-600 focus:border-blue-600 transition-all bg-gray-50 focus:bg-white outline-none appearance-none text-gray-700">
+                                        <option value="usuario">Quiero ser Usuario</option>
+                                        <option value="inversionista">Quiero ser Inversionista</option>
+                                        <option value="tecnico">Soy Técnico Profesional</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-5 text-gray-500">
+                                        <i class="fa-solid fa-chevron-down text-sm"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl transition-all transform hover:-translate-y-1 shadow-[0_8px_30px_rgb(37,99,235,0.25)] flex justify-center items-center space-x-3 mt-8">
+                            <span>Enviar Solicitud</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-16 border-t border-blue-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center border-b border-blue-800/50 pb-12">
+                <div class="text-center md:text-left">
+                    <a href="#" class="text-3xl font-extrabold tracking-tight text-white mb-4 block">Chambaland<span class="text-orange-500">.</span></a>
+                    <p class="text-blue-200 text-xl font-light italic mt-2">"El trabajo bien hecho, por fin es un trabajo seguro."</p>
+                </div>
+                
+                <div class="flex justify-center md:justify-end space-x-6 text-blue-300">
+                    <a href="#" class="w-12 h-12 rounded-full bg-blue-800/50 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all transform hover:-translate-y-1"><i class="fa-brands fa-twitter text-xl"></i></a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-blue-800/50 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all transform hover:-translate-y-1"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-blue-800/50 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all transform hover:-translate-y-1"><i class="fa-brands fa-instagram text-xl"></i></a>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-4 flex flex-col md:flex-row justify-between items-center text-sm text-blue-400 font-light">
+                <p>&copy; 2026 Chambaland. Todos los derechos reservados bajo las leyes vigentes aplicables en México.</p>
+                <div class="mt-4 md:mt-0 space-x-6">
+                    <a href="#" class="hover:text-white transition-colors">Términos Comerciales</a>
+                    <a href="#" class="hover:text-white transition-colors">Aviso de Privacidad</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts de Interacción (Vainilla JS) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Menu móvil (Hamburguesa)
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const icon = btn.querySelector('i');
+
+            function toggleMenu() {
+                const isHidden = menu.classList.contains('hidden');
+                
+                if (isHidden) {
+                    menu.classList.remove('hidden');
+                    // Retraso ligero para permitir que la clase hidden se remueva antes de aplicar transformaciones
+                    setTimeout(() => {
+                        menu.classList.add('scale-y-100', 'opacity-100');
+                        menu.classList.remove('scale-y-0', 'opacity-0');
+                    }, 10);
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    menu.classList.remove('scale-y-100', 'opacity-100');
+                    menu.classList.add('scale-y-0', 'opacity-0');
+                    setTimeout(() => {
+                        menu.classList.add('hidden');
+                    }, 300); // Igual a duration-300
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            }
+
+            // Clases iniciales para animación de menú
+            menu.classList.add('scale-y-0', 'opacity-0');
+
+            btn.addEventListener('click', toggleMenu);
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (!menu.classList.contains('hidden')) {
+                        toggleMenu();
+                    }
+                });
+            });
+
+            // Glassmorphism effect on scroll
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('shadow-md', 'bg-white/95');
+                    header.classList.remove('shadow-sm', 'bg-white/90');
+                } else {
+                    header.classList.remove('shadow-md', 'bg-white/95');
+                    header.classList.add('shadow-sm', 'bg-white/90');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
